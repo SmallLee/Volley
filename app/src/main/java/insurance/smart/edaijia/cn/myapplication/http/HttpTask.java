@@ -7,18 +7,15 @@ import com.google.gson.Gson;
 import java.io.UnsupportedEncodingException;
 
 /**
- *
+ * 一个可执行的任务，交给线程池执行
  */
 
 class HttpTask<T> implements Runnable {
     private IHttpService httpService;
-    private IHttpListener mHttpListener;
-    private int method;
     HttpTask(T requestInfo, String url, int method,IHttpService httpService, IHttpListener httpListener){
         this.httpService = httpService;
-        this.mHttpListener = httpListener;
         httpService.setUrl(url);
-        httpService.setHttpCallBack(mHttpListener);
+        httpService.setHttpCallBack(httpListener);
         if (requestInfo != null) {
             String requestContent = new Gson().toJson(requestInfo);
             try {

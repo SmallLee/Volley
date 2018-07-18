@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- *
+ *  真正执行网络操作的
  */
 
 class JsonHttpService implements IHttpService {
@@ -42,7 +42,6 @@ class JsonHttpService implements IHttpService {
     //真实的网络操作
     @Override
     public void execute() {
-        Log.d("VolleyActivity", "execute: ");
         try {
             URL url = new URL(this.url);
             connection = (HttpURLConnection) url.openConnection();
@@ -83,5 +82,4 @@ class JsonHttpService implements IHttpService {
             connection.disconnect();
         }
     }
-
 }
